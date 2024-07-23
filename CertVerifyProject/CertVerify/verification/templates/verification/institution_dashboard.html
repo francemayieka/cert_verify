@@ -1,0 +1,61 @@
+<!-- templates/verification/institution_dashboard.html -->
+
+{% extends 'verification/base.html' %}
+
+{% block content %}
+    <h2>Institution Dashboard</h2>
+
+    <!-- Form to add new students -->
+    <h3>Add Student</h3>
+    <form method="post" action="{% url 'institution_dashboard' %}">
+        {% csrf_token %}
+        {{ student_form.as_p }}
+        <button type="submit" name="add_student">Add Student</button>
+    </form>
+
+    <!-- Form to upload certificates -->
+    <h3>Upload Certificate</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'institution_dashboard' %}">
+        {% csrf_token %}
+        {{ certificate_form.as_p }}
+        <button type="submit" name="add_certificate">Upload Certificate</button>
+    </form>
+
+    <!-- Form to upload transcripts -->
+    <h3>Upload Transcript</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'institution_dashboard' %}">
+        {% csrf_token %}
+        {{ transcript_form.as_p }}
+        <button type="submit" name="add_transcript">Upload Transcript</button>
+    </form>
+
+    <h3>Students</h3>
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.name }} (ID: {{ student.student_id }})
+                <ul>
+                    {% for certificate in student.certificate_set.all %}
+                        <li>
+                            Course: {{ certificate.course_name }} - 
+                            <a href="{{ certificate.certificate_file.url }}" download>Download Certificate</a>
+                        </li>
+                    {% empty %}
+                        <li>No certificates available</li>
+                    {% endfor %}
+                </ul>
+                <ul>
+                    {% for transcript in student.transcript_set.all %}
+                        <li>
+                            <a href="{{ transcript.transcript_file.url }}" download>Download Transcript</a>
+                        </li>
+                    {% empty %}
+                        <li>No transcripts available</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% empty %}
+            <li>No students found</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

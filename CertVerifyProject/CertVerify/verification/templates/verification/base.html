@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CertVerify</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'institution_signup' %}">Institution Signup</a></li>
+            <li><a href="{% url 'employer_signup' %}">Employer Signup</a></li>
+            <li><a href="{% url 'institution_dashboard' %}">Institution Dashboard</a></li>
+            <li><a href="{% url 'employer_dashboard' %}">Employer Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CertVerify</p>
+    </footer>
+</body>
+</html>
