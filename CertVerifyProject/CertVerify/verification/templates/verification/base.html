@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CertVerify</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'institution_signup' %}">Institution Signup</a></li>
-            <li><a href="{% url 'employer_signup' %}">Employer Signup</a></li>
-            <li><a href="{% url 'institution_dashboard' %}">Institution Dashboard</a></li>
-            <li><a href="{% url 'employer_dashboard' %}">Employer Dashboard</a></li>
+            <li><a href="{% url 'employer_dashboard' %}">Verify Certificate</a></li>
         </ul>
     </nav>
-
-    <div class="container">
+    <div class="content">
         {% block content %}
         {% endblock %}
     </div>
-
     <footer>
         <p>&copy; 2024 CertVerify</p>
     </footer>

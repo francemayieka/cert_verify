@@ -1,15 +1,18 @@
-# CertVerify/urls.py
+# verification/urls.py
 
+from django.urls import path
 from django.contrib import admin
-from django.urls import path, include
-from verification import views
+from .views import home, signup, login_view, logout_view, institution_dashboard, employer_dashboard, download_file
 
 urlpatterns = [
+    path('', home, name='home'),
+    path('signup/', signup, name='signup'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('institution_dashboard/', institution_dashboard, name='institution_dashboard'),
+    path('employer_dashboard/', employer_dashboard, name='employer_dashboard'),
+    path('download/<path:file_path>/', download_file, name='download_file'),
+    # admin paths
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('institution_signup/', views.institution_signup, name='institution_signup'),
-    path('employer_signup/', views.employer_signup, name='employer_signup'),
-    path('institution_dashboard/', views.institution_dashboard, name='institution_dashboard'),
-    path('employer_dashboard/', views.employer_dashboard, name='employer_dashboard'),
-    # Other paths
 ]
+
