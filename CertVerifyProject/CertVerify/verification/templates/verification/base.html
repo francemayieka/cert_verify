@@ -1,17 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CertVerify</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'employer_dashboard' %}">Verify Certificate</a></li>
+            <li><a href="{% url 'verify_certificate' %}">Verify Certificate</a></li>
+            <li><a href="{% url 'register_institution' %}">Register Institution</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
         </ul>
     </nav>
     <div class="content">
@@ -19,7 +22,7 @@
         {% endblock %}
     </div>
     <footer>
-        <p>&copy; 2024 CertVerify</p>
+        <p>&copy; 2024 CertVerify. All Rights Reserved.</p>
     </footer>
 </body>
 </html>

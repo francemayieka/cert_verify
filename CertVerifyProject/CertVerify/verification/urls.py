@@ -1,18 +1,13 @@
-# verification/urls.py
+# urls.py
 
 from django.urls import path
-from django.contrib import admin
-from .views import home, signup, login_view, logout_view, institution_dashboard, employer_dashboard, download_file
+from . import views
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('signup/', signup, name='signup'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
-    path('institution_dashboard/', institution_dashboard, name='institution_dashboard'),
-    path('employer_dashboard/', employer_dashboard, name='employer_dashboard'),
-    path('download/<path:file_path>/', download_file, name='download_file'),
-    # admin paths
-    path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('verify_certificate/', views.verify_certificate, name='verify_certificate'),
+    path('register_institution/', views.register_institution, name='register_institution'),
+    path('about/', views.about, name='about'),
+    path('contact_us/', views.contact_us, name='contact_us'),
+    path('download/<path:file_path>/', views.download_file, name='download_file'),  # Ensure this is included
 ]
-

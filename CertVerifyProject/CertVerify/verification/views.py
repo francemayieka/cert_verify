@@ -1,70 +1,17 @@
+# views.py
+
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserSignupForm, InstitutionSignupForm, EmployerSignupForm, CertificateSearchForm
-from .models import Institution, Employer, Student, Certificate, Transcript
+from django.http import FileResponse, HttpResponse
+from django.conf import settings
+import os
+from django.core.mail import send_mail
+from .forms import UserSignupForm, InstitutionSignupForm, CertificateSearchForm, ContactForm
+from .models import Institution, Student, Certificate, Transcript
 
 def home(request):
     return render(request, 'verification/home.html')
 
-def signup(request):
-    if request.method == 'POST':
-        user_form = UserSignupForm(request.POST)
-        if user_form.is_valid():
-            user = user_form.save(commit=False)
-            user.set_password(user_form.cleaned_data['password'])
-            user.save()
-            user_type = user_form.cleaned_data['user_type']
-            if user_type == 'institution':
-                institution_form = InstitutionSignupForm(request.POST)
-                if institution_form.is_valid():
-                    institution = institution_form.save(commit=False)
-                    institution.user = user
-                    institution.save()
-            elif user_type == 'employer':
-                employer_form = EmployerSignupForm(request.POST)
-                if employer_form.is_valid():
-                    employer = employer_form.save(commit=False)
-                    employer.user = user
-                    employer.save()
-            auth_login(request, user)
-            return redirect('institution_dashboard' if user_type == 'institution' else 'employer_dashboard')
-    else:
-        user_form = UserSignupForm()
-    return render(request, 'verification/signup.html', {'user_form': user_form})
-
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            auth_login(request, user)
-            if hasattr(user, 'institution'):
-                return redirect('institution_dashboard')
-            elif hasattr(user, 'employer'):
-                return redirect('employer_dashboard')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'verification/login.html', {'form': form})
-
-def logout_view(request):
-    from django.contrib.auth import logout
-    logout(request)
-    return redirect('home')
-
-def institution_dashboard(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    
-    try:
-        institution = Institution.objects.get(user=request.user)
-    except Institution.DoesNotExist:
-        return redirect('home')
-    
-    students = Student.objects.filter(institution=institution)
-    return render(request, 'verification/institution_dashboard.html', {'students': students})
-
-def employer_dashboard(request):
+def verify_certificate(request):
     if request.method == 'POST':
         form = CertificateSearchForm(request.POST)
         if form.is_valid():
@@ -83,18 +30,40 @@ def employer_dashboard(request):
                     'certificate': certificate,
                     'transcript': transcript,
                 }
-                return render(request, 'verification/employer_dashboard.html', context)
+                return render(request, 'verification/verify_certificate.html', context)
             except (Student.DoesNotExist, Certificate.DoesNotExist):
-                return render(request, 'verification/employer_dashboard.html', {'form': form, 'error': 'Certificate or student not found.'})
+                return render(request, 'verification/verify_certificate.html', {'form': form, 'error': 'Certificate or student not found.'})
     else:
         form = CertificateSearchForm()
-    return render(request, 'verification/employer_dashboard.html', {'form': form})
+    return render(request, 'verification/verify_certificate.html', {'form': form})
+
+def register_institution(request):
+    if request.method == 'POST':
+        form = InstitutionSignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = InstitutionSignupForm()
+    return render(request, 'verification/register_institution.html', {'form': form})
+
+def about(request):
+    return render(request, 'verification/about_us.html')
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            from_email = form.cleaned_data['email']
+            send_mail(subject, message, from_email, ['support@example.com'])
+            return render(request, 'verification/contact_us.html', {'form': form, 'success': 'Your message has been sent.'})
+    else:
+        form = ContactForm()
+    return render(request, 'verification/contact_us.html', {'form': form})
 
 def download_file(request, file_path):
-    from django.conf import settings
-    from django.http import FileResponse
-    import os
-
     file_path = os.path.join(settings.MEDIA_ROOT, file_path)
     if os.path.exists(file_path):
         return FileResponse(open(file_path, 'rb'))

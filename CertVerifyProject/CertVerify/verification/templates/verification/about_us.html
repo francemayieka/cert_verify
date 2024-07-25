@@ -1,0 +1,21 @@
+{% extends 'verification/base.html' %}
+{% load static %}
+{% block content %}
+<section class="about">
+    <h2>About Us</h2>
+    <p>Welcome to CertVerify. We are a team dedicated to delivering accurate and efficient certificate verification services. Our platform aims to streamline the process of verifying academic certificates for employers, institutions, and individuals.</p>
+    <div class="team">
+        <div class="team-member">
+            <img src="{% static 'images/hero.jpg' %}" alt="Team Member 1">
+            <h3>John Doe</h3>
+            <p>Co-Founder & CEO</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'images/hero.jpg' %}" alt="Team Member 2">
+            <h3>Jane Smith</h3>
+            <p>Co-Founder & CTO</p>
+        </div>
+    </div>
+    <p>Our mission is to ensure transparency and trust in certificate verification. We are constantly innovating to improve our services and meet the needs of our users.</p>
+</section>
+{% endblock %}
