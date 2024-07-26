@@ -1,23 +1,21 @@
 {% extends 'verification/base.html' %}
-
 {% block content %}
+<h2>Verify Certificate</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Search</button>
 </form>
-
 {% if certificate %}
-    <h2>Certificate Found</h2>
-    <p>Student Name: {{ student.name }}</p>
-    <p>Student ID: {{ student.student_id }}</p>
+    <h3>Certificate Details</h3>
+    <p>Student: {{ student.name }}</p>
     <p>Certificate Number: {{ certificate.certificate_no }}</p>
-    <p>Course Name: {{ certificate.course_name }}</p>
+    <p>Course: {{ certificate.course_name }}</p>
+    <p>Issue Date: {{ certificate.issue_date }}</p>
+    <a href="{% url 'download_certificate' certificate.certificate_file %}">Download Certificate</a>
     {% if transcript %}
-        <p><a href="{% url 'download_file' transcript.transcript_file.name %}">Download Transcript</a></p>
-    {% endif %}
-    {% if certificate.certificate_file %}
-        <p><a href="{% url 'download_file' certificate.certificate_file.name %}">Download Certificate</a></p>
+        <h3>Transcript</h3>
+        <a href="{% url 'download_transcript' transcript.transcript_file %}">Download Transcript</a>
     {% endif %}
 {% elif error %}
     <p>{{ error }}</p>

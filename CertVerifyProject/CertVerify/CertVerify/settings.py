@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a-re@_b^pr_^q^^67(9y7dd0&ih$g$u8005+&5=9j8jscx##gr'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-a-re@_b^pr_^q^^67(9y7dd0&ih$g$u8005+&5=9j8jscx##gr')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +42,7 @@ ROOT_URLCONF = 'CertVerify.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'verification/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,8 +100,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -111,8 +111,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# Login and Logout Redirect URLs
+LOGIN_REDIRECT_URL = 'verify_certificate'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Authentication backends
 AUTHENTICATION_BACKENDS = [
