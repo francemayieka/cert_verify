@@ -1,9 +1,14 @@
 {% extends 'verification/base.html' %}
+
 {% block content %}
-<h2>Register Institution</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+<div class="register-container">
+    <div class="register-form">
+        <h2>Register Institution</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

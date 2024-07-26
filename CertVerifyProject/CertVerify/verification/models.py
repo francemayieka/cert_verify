@@ -1,3 +1,5 @@
+# models.py
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -25,6 +27,7 @@ class Student(models.Model):
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     student_id = models.CharField(max_length=50, unique=True)  # Removed alphanumeric constraint
+    image = models.ImageField(upload_to='student_images/', blank=True, null=True)  # Added image field
 
     def __str__(self):
         return self.name

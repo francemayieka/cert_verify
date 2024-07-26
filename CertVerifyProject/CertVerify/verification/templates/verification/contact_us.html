@@ -1,12 +1,17 @@
 {% extends 'verification/base.html' %}
+
 {% block content %}
-<h2>Contact Us</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send</button>
-</form>
-{% if success %}
-    <p>{{ success }}</p>
-{% endif %}
+<div class="contact-container">
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send</button>
+        </form>
+        {% if success %}
+            <p class="success-message">{{ success }}</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

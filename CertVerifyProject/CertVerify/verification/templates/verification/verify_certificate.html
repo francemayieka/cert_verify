@@ -1,23 +1,35 @@
 {% extends 'verification/base.html' %}
+
 {% block content %}
-<h2>Verify Certificate</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
-</form>
-{% if certificate %}
-    <h3>Certificate Details</h3>
-    <p>Student: {{ student.name }}</p>
-    <p>Certificate Number: {{ certificate.certificate_no }}</p>
-    <p>Course: {{ certificate.course_name }}</p>
-    <p>Issue Date: {{ certificate.issue_date }}</p>
-    <a href="{% url 'download_certificate' certificate.certificate_file %}">Download Certificate</a>
-    {% if transcript %}
-        <h3>Transcript</h3>
-        <a href="{% url 'download_transcript' transcript.transcript_file %}">Download Transcript</a>
-    {% endif %}
-{% elif error %}
-    <p>{{ error }}</p>
-{% endif %}
+<div class="verify-container">
+    <div class="verify-form">
+        <h2>Verify Certificate</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+
+        {% if certificate %}
+            <div class="certificate-details">
+                <h3>Certificate Details</h3>
+                {% if student.image %}
+                    <img src="{{ student.image.url }}" alt="Student Image" class="student-image">
+                {% endif %}
+                <p>Student: {{ student.name }}</p>
+                <p>Student ID: {{ student.student_id }}</p>
+                <p>Certificate Number: {{ certificate.certificate_no }}</p>
+                <p>Course: {{ certificate.course_name }}</p>
+                <p>Graduation Date: {{ certificate.issue_date }}</p>
+                <a href="{% url 'download_certificate' certificate.certificate_file %}" class="download-link">Download Certificate</a>
+                {% if transcript %}
+                    <h3>Transcript</h3>
+                    <a href="{% url 'download_transcript' transcript.transcript_file %}" class="download-link">Download Transcript</a>
+                {% endif %}
+            </div>
+        {% elif error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

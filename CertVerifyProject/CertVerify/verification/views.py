@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserSignupForm, InstitutionSignupForm, EmployerSignupForm, CertificateSearchForm, ContactForm
-from .models import Institution, Employer, Student, Certificate, Transcript
+from .forms import UserSignupForm, InstitutionSignupForm, CertificateSearchForm, ContactForm
+from .models import Institution, Student, Certificate, Transcript, ContactMessage, InstitutionRegistration
 
 def home(request):
     return render(request, 'verification/home.html')
@@ -32,12 +32,10 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            # Redirect to the next URL or to 'verify_certificate'
             next_url = request.POST.get('next', 'verify_certificate')
             return redirect(next_url)
     else:
         form = AuthenticationForm()
-    # Handle the 'next' parameter in the GET request
     next_url = request.GET.get('next', '')
     return render(request, 'verification/login.html', {'form': form, 'next': next_url})
 
@@ -77,7 +75,7 @@ def register_institution(request):
         form = InstitutionSignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to home or another page after registration
+            return redirect('home')
     else:
         form = InstitutionSignupForm()
     return render(request, 'verification/register_institution.html', {'form': form})
@@ -89,7 +87,7 @@ def contact_us(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save()  # Save the contact message to the database
             return render(request, 'verification/contact_us.html', {'form': form, 'success': 'Your message has been sent.'})
     else:
         form = ContactForm()

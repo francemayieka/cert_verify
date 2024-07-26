@@ -17,6 +17,11 @@ class UserSignupForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'maxlength': 150}),
             'email': forms.EmailInput(attrs={'maxlength': 254}),
         }
+        help_texts = {
+            'username': '',  # Remove help text for the username field
+            'email': '',     # Optionally remove help text for the email field
+            'password': '',  # Optionally remove help text for the password field
+        }
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
@@ -33,6 +38,12 @@ class InstitutionSignupForm(forms.ModelForm):
             'address': forms.TextInput(attrs={'maxlength': 255}),
             'email': forms.EmailInput(attrs={'maxlength': 254}),
             'phone_number': forms.TextInput(attrs={'maxlength': 10}),
+        }
+        help_texts = {
+            'name': '', 
+            'address': '',
+            'email': '',
+            'phone_number': '',
         }
 
     def clean_phone_number(self):
@@ -52,6 +63,12 @@ class EmployerSignupForm(forms.ModelForm):
             'address': forms.TextInput(attrs={'maxlength': 255}),
             'phone_number': forms.TextInput(attrs={'maxlength': 10}),
             'email': forms.EmailInput(attrs={'maxlength': 254}),
+        }
+        help_texts = {
+            'company_name': '',
+            'address': '',
+            'phone_number': '',
+            'email': '',
         }
 
     def clean_phone_number(self):
@@ -78,6 +95,11 @@ class ContactForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'maxlength': 255}),
             'email': forms.EmailInput(attrs={'maxlength': 254}),
             'message': forms.Textarea(attrs={'maxlength': 2000}),
+        }
+        help_texts = {
+            'name': '',
+            'email': '',
+            'message': '',
         }
 
 class UserLoginForm(AuthenticationForm):

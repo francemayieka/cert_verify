@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 <header class="hero">
-    <img src="{% static 'images/hero.jpg' %}" alt="Certificate Verification" class="hero-image">
     <div class="hero-text">
         <h1>Welcome to CertVerify</h1>
         <p>Your trusted solution for accurate and efficient certificate verification.</p>
@@ -14,95 +13,20 @@
     <h2>Why Choose Us?</h2>
     <div class="feature-container">
         <div class="feature-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="Fast Verification" class="feature-image">
+            <i class="fas fa-clock feature-icon"></i>
             <h3>Fast Verification</h3>
             <p>Our state-of-the-art technology ensures your certificates are verified quickly, minimizing wait times and enhancing efficiency.</p>
         </div>
         <div class="feature-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="Secure" class="feature-image">
+            <i class="fas fa-lock feature-icon"></i>
             <h3>Secure</h3>
             <p>We employ the highest security standards to safeguard your data, offering peace of mind with our robust protection measures.</p>
         </div>
         <div class="feature-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="User-Friendly" class="feature-image">
+            <i class="fas fa-thumbs-up feature-icon"></i>
             <h3>User-Friendly</h3>
             <p>Designed with user experience in mind, our platform is intuitive and easy to navigate, ensuring a seamless verification process.</p>
         </div>
-    </div>
-</section>
-
-<section class="testimonial">
-    <h2>What Our Users Say</h2>
-    <div class="testimonial-container">
-        <div class="testimonial-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="User 1" class="testimonial-image">
-            <blockquote>
-                <p>"CertVerify streamlined our certificate verification process. It’s fast, reliable, and easy to use. Highly recommended!"</p>
-                <cite>– Alex Johnson, HR Manager</cite>
-            </blockquote>
-        </div>
-        <div class="testimonial-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="User 2" class="testimonial-image">
-            <blockquote>
-                <p>"I was impressed with how secure and straightforward the verification process was. Great job, CertVerify!"</p>
-                <cite>– Maria Lee, Education Consultant</cite>
-            </blockquote>
-        </div>
-    </div>
-</section>
-
-<section class="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps-container">
-        <div class="step">
-            <img src="{% static 'images/hero.jpg' %}" alt="Step 1" class="step-image">
-            <h3>Step 1: Upload Certificate</h3>
-            <p>Start by uploading the certificate you want to verify. Our system supports various formats for your convenience.</p>
-        </div>
-        <div class="step">
-            <img src="{% static 'images/hero.jpg' %}" alt="Step 2" class="step-image">
-            <h3>Step 2: Verify</h3>
-            <p>Our advanced algorithms and manual checks ensure the authenticity of the certificate in a matter of seconds.</p>
-        </div>
-        <div class="step">
-            <img src="{% static 'images/hero.jpg' %}" alt="Step 3" class="step-image">
-            <h3>Step 3: Receive Confirmation</h3>
-            <p>Get instant confirmation of the certificate's validity and download the verification report for your records.</p>
-        </div>
-    </div>
-</section>
-
-<section class="contact">
-    <h2>Contact Us</h2>
-    <p>If you have any questions or need further assistance, feel free to reach out to our support team. We’re here to help!</p>
-    <form action="{% url 'contact_us' %}" method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        
-        <button type="submit">Send Message</button>
-    </form>
-</section>
-
-<section class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <h3>How secure is the verification process?</h3>
-        <p>Our system uses top-notch security protocols to ensure your data is protected at all times. We adhere to industry standards for data security and privacy.</p>
-    </div>
-    <div class="faq-item">
-        <h3>What types of certificates can be verified?</h3>
-        <p>We support a wide range of certificate types, including academic, professional, and government-issued certificates. If you have specific requirements, please contact us.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Is there a fee for certificate verification?</h3>
-        <p>We offer both free and premium verification services. Basic verifications are free, while premium services provide additional features and faster processing.</p>
     </div>
 </section>
 
