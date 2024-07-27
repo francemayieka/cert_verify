@@ -1,5 +1,3 @@
-# admin.py
-
 from django.utils.safestring import mark_safe
 from django.contrib import admin
 from .models import Institution, Employer, Student, Certificate, Transcript, ContactMessage, InstitutionRegistration
@@ -55,7 +53,6 @@ admin.site.register(Transcript, TranscriptAdmin)
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(InstitutionRegistration, InstitutionRegistrationAdmin)
 
-# Customizing the Django Admin Site header and title
 admin.site.site_header = "CertVerify Admin"
 admin.site.site_title = "CertVerify Administration"
 admin.site.index_title = "Welcome to CertVerify Admin Dashboard"

@@ -2,122 +2,6 @@
 {% load static %}
 
 {% block content %}
-<style>
-    /* Base Styles */
-    .about {
-        padding: 2rem;
-        background-color: #f4f4f4;
-    }
-
-    .about-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .about-header h2 {
-        font-size: 3rem; /* Larger size for main titles */
-        color: #003366; /* Navy blue color for main titles */
-        margin-bottom: 0.5rem;
-    }
-
-    .about-header p {
-        font-size: 1.2rem;
-        color: #555;
-    }
-
-    .about-body {
-        max-width: 900px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .about-item {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-direction: row; /* Default direction for larger screens */
-    }
-
-    .about-item img {
-        width: 150px; /* Adjusted width */
-        height: 150px; /* Adjusted height */
-        object-fit: cover;
-        border-radius: 8px;
-    }
-
-    .about-text {
-        flex: 1;
-    }
-
-    .about-item h3 {
-        font-size: 1.8rem; /* Larger size for subtitles */
-        margin-bottom: 0.5rem;
-        color: #003366; /* Navy blue color for subtitles */
-    }
-
-    .about-item p {
-        font-size: 1.1rem;
-        color: #333;
-        line-height: 1.6;
-    }
-
-    .about-cta {
-        text-align: center;
-        margin-top: 3rem;
-    }
-
-    .about-cta h3 {
-        font-size: 2.2rem; /* Larger size for call-to-action titles */
-        margin-bottom: 1rem;
-        color: #003366; /* Navy blue color for call-to-action titles */
-    }
-
-    .about-cta p {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .cta-button {
-        background-color: #ff9900; /* Orange color for the button */
-        color: white;
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1.1rem;
-    }
-
-    .cta-button:hover {
-        background-color: #e64a19; /* Darker orange for hover effect */
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .about-item {
-            flex-direction: column; /* Stack items vertically on mobile */
-            align-items: flex-start; /* Align items to the start */
-        }
-
-        .about-item img {
-            width: 100%; /* Full width for images on mobile */
-            height: auto; /* Auto height to maintain aspect ratio */
-            margin-bottom: 1rem; /* Space between image and text */
-        }
-
-        .about-item h3 {
-            font-size: 1.6rem; /* Slightly smaller size for subtitles */
-        }
-
-        .about-item p {
-            font-size: 1rem; /* Slightly smaller font size for mobile */
-        }
-    }
-</style>
 
 <section class="about">
     <div class="about-header">
@@ -126,7 +10,7 @@
     </div>
     <div class="about-body">
         <div class="about-item">
-            <img src="{% static 'images/hero.jpg' %}" alt="Our Mission">
+            <img src="{% static 'images/hero2.jpg' %}" alt="Our Mission">
             <div class="about-text">
                 <h3>Our Mission</h3>
                 <p>At CertVerify, we aim to simplify the verification of academic certificates by leveraging advanced technology to deliver quick, accurate, and secure results. We are committed to maintaining the highest standards of reliability and efficiency.</p>

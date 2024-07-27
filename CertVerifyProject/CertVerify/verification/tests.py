@@ -30,7 +30,6 @@ class UserSignupTests(TestCase):
             'password': 'password123',
             'password_confirm': 'password123',  # Adjust based on your form
         })
-        # Ensure user creation and redirect
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(User.objects.get().username, 'testuser')
         self.assertRedirects(response, reverse('verify_certificate'))

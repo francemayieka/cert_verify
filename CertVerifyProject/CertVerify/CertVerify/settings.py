@@ -120,9 +120,3 @@ LOGOUT_REDIRECT_URL = 'home'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-# Ensure this part is removed from settings.py
-# Adding media URL handling for development
-# if DEBUG:
-#     from django.conf.urls.static import static
-#     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

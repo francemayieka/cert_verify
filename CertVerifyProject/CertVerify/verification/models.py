@@ -1,5 +1,3 @@
-# models.py
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -7,7 +5,7 @@ class Institution(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=10, blank=True, null=True)  # Max 10 characters for phone number
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
@@ -17,7 +15,7 @@ class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=10, blank=True, null=True)  # Max 10 characters for phone number
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
@@ -26,8 +24,8 @@ class Employer(models.Model):
 class Student(models.Model):
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    student_id = models.CharField(max_length=50, unique=True)  # Removed alphanumeric constraint
-    image = models.ImageField(upload_to='student_images/', blank=True, null=True)  # Added image field
+    student_id = models.CharField(max_length=50, unique=True)
+    image = models.ImageField(upload_to='student_images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -62,7 +60,7 @@ class InstitutionRegistration(models.Model):
     name = models.CharField(max_length=255)
     address = models.TextField()
     email = models.EmailField()
-    phone_number = models.CharField(max_length=10, blank=True, null=True)  # Max 10 characters for phone number
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

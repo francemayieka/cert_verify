@@ -15,13 +15,11 @@ urlpatterns = [
     path('download_certificate/<path:file_path>/', views.download_certificate, name='download_certificate'),
     path('download_transcript/<path:file_path>/', views.download_transcript, name='download_transcript'),
     
-    # Authentication URLs
     path('login/', LoginView.as_view(template_name='verification/login.html'), name='login'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
     path('signup/', views.user_signup, name='signup'),
 ]
 
-# Serve static files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

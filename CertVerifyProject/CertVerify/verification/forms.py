@@ -18,9 +18,9 @@ class UserSignupForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'maxlength': 254}),
         }
         help_texts = {
-            'username': '',  # Remove help text for the username field
-            'email': '',     # Optionally remove help text for the email field
-            'password': '',  # Optionally remove help text for the password field
+            'username': '',
+            'email': '',
+            'password': '',
         }
 
     def clean_password(self):
@@ -85,7 +85,6 @@ class CertificateSearchForm(forms.Form):
     certificate_no = forms.CharField(max_length=50)
     course_name = forms.CharField(max_length=255)
 
-    # Removed the custom validation for student_id
 
 class ContactForm(forms.ModelForm):
     class Meta:
