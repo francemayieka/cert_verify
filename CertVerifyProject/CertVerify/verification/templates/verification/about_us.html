@@ -2,19 +2,155 @@
 {% load static %}
 
 {% block content %}
+<style>
+    /* Base Styles */
+    .about {
+        padding: 2rem;
+        background-color: #f4f4f4;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .about-header h2 {
+        font-size: 3rem; /* Larger size for main titles */
+        color: #003366; /* Navy blue color for main titles */
+        margin-bottom: 0.5rem;
+    }
+
+    .about-header p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .about-body {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-direction: row; /* Default direction for larger screens */
+    }
+
+    .about-item img {
+        width: 150px; /* Adjusted width */
+        height: 150px; /* Adjusted height */
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .about-text {
+        flex: 1;
+    }
+
+    .about-item h3 {
+        font-size: 1.8rem; /* Larger size for subtitles */
+        margin-bottom: 0.5rem;
+        color: #003366; /* Navy blue color for subtitles */
+    }
+
+    .about-item p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .about-cta {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .about-cta h3 {
+        font-size: 2.2rem; /* Larger size for call-to-action titles */
+        margin-bottom: 1rem;
+        color: #003366; /* Navy blue color for call-to-action titles */
+    }
+
+    .about-cta p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        background-color: #ff9900; /* Orange color for the button */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+    }
+
+    .cta-button:hover {
+        background-color: #e64a19; /* Darker orange for hover effect */
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+        .about-item {
+            flex-direction: column; /* Stack items vertically on mobile */
+            align-items: flex-start; /* Align items to the start */
+        }
+
+        .about-item img {
+            width: 100%; /* Full width for images on mobile */
+            height: auto; /* Auto height to maintain aspect ratio */
+            margin-bottom: 1rem; /* Space between image and text */
+        }
+
+        .about-item h3 {
+            font-size: 1.6rem; /* Slightly smaller size for subtitles */
+        }
+
+        .about-item p {
+            font-size: 1rem; /* Slightly smaller font size for mobile */
+        }
+    }
+</style>
+
 <section class="about">
-    <h2>About Us</h2>
-    <p>Welcome to CertVerify. We are dedicated to providing a seamless and reliable certificate verification service. Our platform is designed to simplify the process of verifying academic certificates, ensuring authenticity and efficiency.</p>
-    <div class="mission-vision">
-        <div class="mission">
-            <h3>Our Mission</h3>
-            <p>To streamline certificate verification by offering a fast, secure, and reliable service that builds trust and transparency in academic credentialing.</p>
+    <div class="about-header">
+        <h2>About Us</h2>
+        <p>Welcome to CertVerify, the leading platform for reliable certificate verification.</p>
+    </div>
+    <div class="about-body">
+        <div class="about-item">
+            <img src="{% static 'images/hero.jpg' %}" alt="Our Mission">
+            <div class="about-text">
+                <h3>Our Mission</h3>
+                <p>At CertVerify, we aim to simplify the verification of academic certificates by leveraging advanced technology to deliver quick, accurate, and secure results. We are committed to maintaining the highest standards of reliability and efficiency.</p>
+            </div>
         </div>
-        <div class="vision">
-            <h3>Our Vision</h3>
-            <p>To be the leading platform in certificate verification, setting the standard for accuracy, security, and user experience in the digital age.</p>
+        <div class="about-item">
+            <img src="{% static 'images/vision.jpg' %}" alt="Our Vision">
+            <div class="about-text">
+                <h3>Our Vision</h3>
+                <p>Our vision is to become the most trusted platform for certificate verification, setting benchmarks for quality and user experience in the digital age. We strive to continuously innovate and adapt to meet the evolving needs of our users.</p>
+            </div>
+        </div>
+        <div class="about-item">
+            <img src="{% static 'images/whyus.jpeg' %}" alt="Why Choose Us?">
+            <div class="about-text">
+                <h3>Why Choose Us?</h3>
+                <p>CertVerify stands out due to our dedication to customer satisfaction, cutting-edge technology, and commitment to accuracy. Our platform is designed with the user in mind, offering a user-friendly interface and comprehensive support to ensure a smooth verification process.</p>
+            </div>
         </div>
     </div>
-    <p>At CertVerify, we are constantly innovating to improve our services and meet the needs of our users. Our commitment to excellence ensures that every verification is handled with the utmost care and precision.</p>
+    <div class="about-cta">
+        <h3>Get In Touch</h3>
+        <p>We are here to help you every step of the way.</p>
+        <a href="{% url 'contact_us' %}" class="cta-button">Contact Us</a>
+    </div>
 </section>
 {% endblock %}
