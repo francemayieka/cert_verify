@@ -5,7 +5,19 @@
     <div class="hero-text">
         <h1>Welcome to CertVerify</h1>
         <p>Your trusted solution for accurate and efficient certificate verification.</p>
-        <a href="{% url 'verify_certificate' %}" class="cta-button">Verify Now</a>
+        <a href="{% url 'verify_certificate' %}" 
+           style="
+               background-color: #ff9900; /* Orange color for the button */
+               color: white;
+               padding: 0.75rem 1.5rem;
+               text-decoration: none;
+               border-radius: 5px;
+               font-size: 1.1rem;
+           "
+           onmouseover="this.style.backgroundColor='#e64a19';" 
+           onmouseout="this.style.backgroundColor='#ff9900';">
+           Verify Now
+        </a>
     </div>
 </header>
 
@@ -29,5 +41,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
