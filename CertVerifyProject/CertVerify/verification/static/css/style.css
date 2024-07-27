@@ -827,57 +827,38 @@ footer p {
 }
 
 
-/* About Us section */
 .about {
-    padding: 2rem;
-    background-color: #f4f4f4;
-    color: #333;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
-/* Header Styling */
 .about h2 {
     text-align: center;
-    color: #003366; /* Replace with your desired header color */
-    margin-bottom: 1rem;
-    font-size: 2rem; /* Adjust as needed */
+    margin-bottom: 20px;
 }
 
-/* About Section Paragraphs */
-.about p {
-    text-align: center;
-    font-size: 1rem;
-    margin-bottom: 1.5rem; /* Increased bottom margin for spacing */
-    color: #666; /* Replace with your desired text color */
-}
-
-/* Mission and Vision Sections */
 .mission-vision {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem; /* Increased gap for better separation */
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .mission, .vision {
-    background-color: #ffffff; /* Replace with your desired background color */
-    padding: 1.5rem; /* Adjust padding for better spacing */
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 600px; /* Adjust as needed */
+    width: 45%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mission h3, .vision h3 {
-    font-size: 1.5rem; /* Adjust as needed */
-    color: #003366; /* Replace with your desired header color */
-    margin-bottom: 0.5rem;
+    margin-top: 0;
 }
 
 .mission p, .vision p {
-    font-size: 1rem;
-    color: #666; /* Replace with your desired text color */
+    margin-bottom: 0;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
