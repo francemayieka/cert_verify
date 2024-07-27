@@ -180,7 +180,7 @@ form button {
 }
 
 form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 footer {
@@ -310,7 +310,7 @@ button {
 }
 
 .login-form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 .login-form p {
@@ -381,7 +381,7 @@ button {
 }
 
 .verify-form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 .verify-form p {
@@ -474,7 +474,7 @@ button {
 }
 
 .contact-form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 .contact-form p {
@@ -542,7 +542,7 @@ button {
 }
 
 .register-form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 .signup-container {
@@ -600,7 +600,7 @@ button {
 }
 
 .signup-form button:hover {
-    background: #003366;
+    background: navy;
 }
 
 .signup-form p {
@@ -746,7 +746,7 @@ body {
 }
 
 nav {
-    background-color: #003366;
+    background-color: navy;
     color: white;
     padding: 1rem;
 }
@@ -800,7 +800,7 @@ nav {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #003366; /* Change as needed */
+        background-color: navy;
         position: absolute;
         top: 3rem;
         left: 0;
@@ -834,7 +834,7 @@ nav {
 
 .about-header h2 {
     font-size: 3rem;
-    color: #003366;
+    color: navy;
     margin-bottom: 0.5rem;
 }
 
@@ -876,7 +876,7 @@ nav {
 .about-item h3 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: #003366;
+    color: navy;
 }
 
 .about-item p {
@@ -893,7 +893,7 @@ nav {
 .about-cta h3 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: #003366;
+    color: navy;
 }
 
 .about-cta p {
