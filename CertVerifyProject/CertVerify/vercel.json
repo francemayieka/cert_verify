@@ -3,10 +3,6 @@
   "name": "certverify",
   "builds": [
     {
-      "src": "CertVerifyProject/CertVerify/manage.py",
-      "use": "@vercel/python"
-    },
-    {
       "src": "CertVerifyProject/CertVerify/wsgi.py",
       "use": "@vercel/python",
       "config": {
@@ -27,5 +23,16 @@
       "src": "/(.*)",
       "dest": "CertVerifyProject/CertVerify/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "CertVerify.settings",
+    "DJANGO_SECRET_KEY": "django-insecure-a-re@_b^pr_^q^^67(9y7dd0&ih$g$u8005+&5=9j8jscx##gr",
+    "DATABASE_URL": "sqlite:///db.sqlite3",
+    "DEBUG": "false",
+    "ALLOWED_HOSTS": "*"
+  },
+  "build": {
+    "installCommand": "pip install -r requirements.txt",
+    "buildCommand": "python manage.py collectstatic --noinput && python manage.py migrate"
+  }
 }
