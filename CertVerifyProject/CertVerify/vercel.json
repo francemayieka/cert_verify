@@ -1,0 +1,38 @@
+{
+    "version": 2,
+    "name": "certverify",
+    "builds": [
+      {
+        "src": "CertVerifyProject/CertVerify/manage.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "CertVerifyProject/CertVerify/wsgi.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "15mb"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/media/(.*)",
+        "dest": "/media/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "CertVerifyProject/CertVerify/wsgi.py"
+      }
+    ],
+    "env": {
+      "SECRET_KEY": "@secret_key",
+      "DEBUG": "false",
+      "DATABASE_URL": "@database_url",
+      "ALLOWED_HOSTS": "@allowed_hosts"
+    }
+  }
+  
