@@ -52,14 +52,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CertVerify.wsgi.application'
 
+# Commented out the PostgreSQL database configuration
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'certverifydb',
+#         'USER': 'postgres',
+#         'PASSWORD': 'xKdc9qZMn8Tewjr7XdZG',
+#         'HOST': 'certverifydb-instance.cb8acoyqsmmg.eu-west-2.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
+# Added MySQL database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'certverifydb',
-        'USER': 'postgres',
-        'PASSWORD': 'xKdc9qZMn8Tewjr7XdZG',
-        'HOST': 'certverifydb-instance.cb8acoyqsmmg.eu-west-2.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'france25$certverifydb',
+        'USER': 'france25',
+        'PASSWORD': '7q3M9P.6c_mHy_Z',
+        'HOST': 'france25.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
