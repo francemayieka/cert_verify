@@ -20,7 +20,6 @@ CSRF_USE_SESSIONS = False
 SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add Whitenoise middleware here
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,7 +87,6 @@ DATABASES = {
     }
 }
 
-
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backups'}
 
@@ -129,6 +128,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
