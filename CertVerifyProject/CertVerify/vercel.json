@@ -1,21 +1,17 @@
 {
   "version": 2,
+  "name": "certverify",
   "builds": [
     {
-      "src": "CertVerify/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    },
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles"
-      }
-    },
-    {
-      "src": "CertVerify/settings.py",
+      "src": "CertVerifyProject/CertVerify/manage.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "CertVerifyProject/CertVerify/CertVerify/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
@@ -24,8 +20,12 @@
       "dest": "/static/$1"
     },
     {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "CertVerify/wsgi.py"
+      "dest": "CertVerifyProject/CertVerify/CertVerify/wsgi.py"
     }
   ]
 }
