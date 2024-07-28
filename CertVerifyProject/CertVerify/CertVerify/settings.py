@@ -14,6 +14,13 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-a-re@_b^pr_^q^^67(9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
 
+CSRF_COOKIE_SECURE = False  # Set to True in production
+CSRF_COOKIE_HTTPONLY = False
+CSRF_USE_SESSIONS = False
+SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -26,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'verification',
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
@@ -61,12 +69,27 @@ WSGI_APPLICATION = 'CertVerify.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'certverifydb',
+        'USER': 'postgres',
+        'PASSWORD': 'xKdc9qZMn8Tewjr7XdZG',
+        'HOST': 'certverifydb-instance.cb8acoyqsmmg.eu-west-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backups'}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
